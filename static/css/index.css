@@ -61,7 +61,7 @@ figure {
 
 .hero-main .hero-body {
   padding-top: 5.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0;
 }
 
 .publication-title {
@@ -76,7 +76,7 @@ figure {
 
 .hero-teaser {
   width: min(100%, 1180px);
-  margin: 2rem auto 0;
+  margin: 4rem auto 0;
 }
 
 .hero-teaser img {
@@ -174,6 +174,10 @@ figure {
 
 .section.is-soft {
   background: #f1f7f4;
+}
+
+#abstract {
+  padding-top: 2.4rem;
 }
 
 .section-kicker {
