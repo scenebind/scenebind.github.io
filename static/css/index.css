@@ -61,7 +61,7 @@ figure {
 
 .hero-main .hero-body {
   padding-top: 5.5rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .publication-title {
@@ -72,6 +72,17 @@ figure {
   line-height: 1.02;
   letter-spacing: 0;
   overflow-wrap: normal;
+}
+
+.hero-teaser {
+  width: min(100%, 1180px);
+  margin: 2rem auto 0;
+}
+
+.hero-teaser img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .publication-subtitle {
