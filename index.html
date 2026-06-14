@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="SceneBind: Binding What and Where Across Vision, Audio, and Language">
+  <meta name="keywords" content="SceneBind, multimodal learning, audio-visual language, spatial scene representation, scene retrieval">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SceneBind: Binding What and Where Across Vision, Audio, and Language</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<body>
+  <nav class="site-nav">
+    <div class="container is-max-widescreen">
+      <a class="brand-mark" href="#">SceneBind</a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#qualitative">Retrieval</a>
+        <a href="#demos-section">Perception</a>
+        <a href="#samples-viewer">Sample Viewer</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero hero-main">
+    <div class="hero-body">
+      <div class="container is-max-widescreen has-text-centered">
+        <h1 class="title publication-title">SceneBind: Binding What and Where Across Vision, Audio, and Language</h1>
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block"><a href="https://www.mingfeichen.com/">Mingfei Chen</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://zijuncui.com/">Zijun Cui</a><sup>1,2</sup>,</span>
+          <span class="author-block"><a href="https://ruokezhang.github.io/en/">Ruoke Zhang</a><sup>1</sup>,</span>
+          <span class="author-block"><a href="https://sites.google.com/view/hyeonggonryu">Hyeonggon Ryu</a><sup>3</sup>,</span>
+          <span class="author-block"><a href="https://faculty.washington.edu/shlizee/NW/team.html">Eli Shlizerman</a><sup>1</sup></span>
+        </div>
+
+        <div class="is-size-5 publication-authors affiliations">
+          <span class="author-block"><sup>1</sup>University of Washington</span>
+          <span class="author-block"><sup>2</sup>University of Texas at Dallas</span>
+          <span class="author-block"><sup>3</sup>Hankuk University of Foreign Studies</span>
+        </div>
+
+        <p class="publication-subtitle">
+          SceneBind represents realistic scenes as semantic-spatial entities, jointly modeling what is present and where it is across vision, binaural audio, and language.
+        </p>
+
+        <div class="publication-links">
+          <a href="#" class="button is-normal">
+            <span class="icon"><i class="ai ai-arxiv"></i></span>
+            <span>arXiv</span>
+          </a>
+          <a href="./static/suppl/index.html" class="button is-normal is-light-link">
+            <span class="icon"><i class="fas fa-table-cells-large"></i></span>
+            <span>Samples</span>
+          </a>
+          <a href="#citation" class="button is-normal is-light-link">
+            <span class="icon"><i class="fas fa-quote-left"></i></span>
+            <span>Cite</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <div class="section-kicker">Overview</div>
+        <h2 class="title is-3 section-title">Abstract</h2>
+      </div>
+      <div class="content section-copy has-text-justified">
+        <p>
+          We present <strong>SceneBind</strong>, an omni-modal representation of realistic scenes with joint semantic and 3D spatial understanding across vision, audio, and language. Existing omni-modal encoders excel at instance-level semantics, or what is present, but often lack explicit spatial structure, or where it is.
+          SceneBind addresses this gap by representing each scene as a semantic-spatial entity, combining a global semantic embedding with object-centric semantic-spatial slots. This representation explicitly captures object-level semantics, spatial attributes, and uncertainty.
+        </p>
+        <p>
+          We further propose <strong>SceneBind Matching</strong>, a semantic-spatial matching scheme that integrates global scene similarity with object alignment, supporting cross-modal scene retrieval and object grounding. SceneBind is compatible with large-scale pretrained semantic encoders, adds lightweight spatial modeling with only a few additional tokens, and enables strong zero-shot transfer to downstream audio-visual localization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-soft" id="method">
+    <div class="container is-max-widescreen">
+      <div class="method-header has-text-centered">
+        <div class="section-kicker">Semantic-Spatial Binding</div>
+        <h2 class="title is-3 section-title">A scene representation that knows what and where.</h2>
+      </div>
+      <div class="method-stack">
+        <figure class="media-frame method-figure">
+          <img src="./static/figures/main_v2.png" alt="SceneBind model overview figure">
+        </figure>
+        <div class="feature-list method-feature-list">
+          <div><strong>Global scene embedding:</strong> aligns visual, audio, and text descriptions in a shared scene space.</div>
+          <div><strong>Spatial-Semantic object-centric slots:</strong> bind semantic annotations with azimuth, elevation, distance, and uncertainty.</div>
+          <div><strong>SceneBind Matching:</strong> fuses global similarity with semantic-spatial object alignment for retrieval and grounding.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="qualitative">
+    <div class="container is-max-widescreen">
+      <div class="columns is-vcentered mb-4">
+        <div class="column is-two-fifths">
+          <div class="section-kicker">Qualitative Results</div>
+          <h2 class="title is-3 section-title">Cross-modal retrieval and Spatial-Semantic Scorer</h2>
+        </div>
+        <div class="column">
+          <p class="section-copy">
+            Global measures whole-scene semantic similarity, Object measures semantic-spatial slot alignment, and Joint is the final retrieval score combining both signals.
+          </p>
+        </div>
+      </div>
+
+      <div class="qual-grid">
+        <article class="qual-card">
+          <img src="./static/suppl/assets/images/2JQ-VvZCjT0_015.jpg" alt="Beach scene with waves and coastal buildings">
+          <div class="qual-body">
+            <div class="qual-direction">Audio to Image</div>
+            <h3>Waves on the right, buildings on the left</h3>
+            <p>A wide shot of a beach with waves crashing on the shore, buildings in the background, and a fishing rod in the foreground.</p>
+            <div class="score-grid" aria-label="SceneBind retrieval scores">
+              <div><span>Global</span><strong>0.598</strong></div>
+              <div><span>Object</span><strong>0.234</strong></div>
+              <div><span>Joint</span><strong>1.050</strong></div>
+            </div>
+            <audio controls preload="metadata" src="./static/suppl/assets/audio/2JQ-VvZCjT0_015.wav"></audio>
+          </div>
+        </article>
+
+        <article class="qual-card">
+          <img src="./static/suppl/assets/images/X9VYuAtz4rk_023.jpg" alt="Stage performance with saxophone and electric guitar">
+          <div class="qual-body">
+            <div class="qual-direction">Text to Audio</div>
+            <h3>Saxophone left, guitar right</h3>
+            <p>A woman plays the saxophone while a man plays the electric guitar on a stage with a red curtain backdrop and a banner.</p>
+            <div class="score-grid" aria-label="SceneBind retrieval scores">
+              <div><span>Global</span><strong>0.435</strong></div>
+              <div><span>Object</span><strong>0.302</strong></div>
+              <div><span>Joint</span><strong>1.455</strong></div>
+            </div>
+            <audio controls preload="metadata" src="./static/suppl/assets/audio/X9VYuAtz4rk_023.wav"></audio>
+          </div>
+        </article>
+
+        <article class="qual-card">
+          <img src="./static/suppl/assets/images/U31UWv9Cvk0_001.jpg" alt="First-person sidewalk beside a river">
+          <div class="qual-body">
+            <div class="qual-direction">Text to Image</div>
+            <h3>River below and to the right</h3>
+            <p>A first-person perspective of walking along a paved sidewalk next to a stone-walled river on a cloudy day.</p>
+            <div class="score-grid" aria-label="SceneBind retrieval scores">
+              <div><span>Global</span><strong>0.399</strong></div>
+              <div><span>Object</span><strong>0.275</strong></div>
+              <div><span>Joint</span><strong>1.398</strong></div>
+            </div>
+            <audio controls preload="metadata" src="./static/suppl/assets/audio/U31UWv9Cvk0_001.wav"></audio>
+          </div>
+        </article>
+
+        <article class="qual-card">
+          <img src="./static/suppl/assets/images/8VoZDct2OwI_006.jpg" alt="Public square in front of a church">
+          <div class="qual-body">
+            <div class="qual-direction">Image to Text</div>
+            <h3>Church bells above the square</h3>
+            <p>A bustling public square in front of a large church with bells ringing and a fountain with an obelisk.</p>
+            <div class="score-grid" aria-label="SceneBind retrieval scores">
+              <div><span>Global</span><strong>0.340</strong></div>
+              <div><span>Object</span><strong>0.260</strong></div>
+              <div><span>Joint</span><strong>1.443</strong></div>
+            </div>
+            <audio controls preload="metadata" src="./static/suppl/assets/audio/8VoZDct2OwI_006.wav"></audio>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section demos-section" id="demos-section">
+    <div class="container is-max-widescreen">
+      <div class="has-text-centered mb-5">
+        <h2 class="title is-3 section-title">Fast Multimodal Spatial-Semantic Perception</h2>
+      </div>
+      <div class="demo-showcase">
+        <figure class="demo-item demo-main">
+          <div class="demo-media original-demo">
+            <video src="./static/media/ground-crop.mp4" autoplay muted loop playsinline aria-label="SceneBind object grounding and spatial querying demonstration"></video>
+          </div>
+        </figure>
+        <div class="demo-copy">
+          <div class="demo-bullet">
+            <strong>Object grounding.</strong>
+            <span>SceneBind uses slot-level semantic-spatial alignment to connect multimodal queries to objects and regions in the scene.</span>
+          </div>
+          <div class="demo-bullet">
+            <strong>Spatial querying.</strong>
+            <span>Scene-level semantics are paired with explicit 3D attributes, enabling queries that depend on where sound and objects occur.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section class="section is-soft" id="fast-perception">
+    <div class="container is-max-widescreen">
+      <div class="columns is-vcentered mb-5 perception-heading">
+        <div class="column is-half">
+          <div class="section-kicker">Fast Perception</div>
+          <h2 class="title is-3 section-title">Predicted audio and visual slots</h2>
+        </div>
+      </div>
+
+      <div class="perception-grid">
+        <article class="perception-card">
+          <div class="grounding-visual">
+            <img src="./static/suppl/assets/images/8VoZDct2OwI_006.jpg" alt="Public square and church grounding example">
+            <span class="pin" style="--x: 56%; --y: 25%;">1</span>
+            <span class="pin pin-alt" style="--x: 84%; --y: 54%;">2</span>
+          </div>
+          <div class="perception-body">
+            <audio class="perception-audio" controls preload="metadata" src="./static/suppl/assets/audio/8VoZDct2OwI_006.wav"></audio>
+            <div class="slot-group">
+              <div class="slot-group-title">Audio slots</div>
+              <div class="slot-row">
+                <strong>A0</strong>
+                <span class="slot-label">church bells ringing <span class="slot-conf">conf 0.823</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front</em><em class="slot-pred">high</em><em class="slot-pred">&gt;10 m</em></div>
+              </div>
+            </div>
+            <div class="slot-group">
+              <div class="slot-group-title">Visual slots</div>
+              <div class="slot-row">
+                <strong>V0</strong>
+                <span class="slot-label">church bells ringing <span class="slot-conf">conf 0.964</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-left</em><em class="slot-pred">high</em><em class="slot-pred">&gt;10 m</em></div>
+              </div>
+              <div class="slot-row">
+                <strong>V4</strong>
+                <span class="slot-label">unicorn balloon <span class="slot-conf">conf 0.231</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front</em><em class="slot-pred">level</em><em class="slot-pred">1.5-5 m</em></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="perception-card">
+          <div class="grounding-visual">
+            <img src="./static/suppl/assets/images/X9VYuAtz4rk_023.jpg" alt="Stage instruments grounding example">
+            <span class="pin" style="--x: 35%; --y: 48%;">1</span>
+            <span class="pin pin-alt" style="--x: 67%; --y: 50%;">2</span>
+          </div>
+          <div class="perception-body">
+            <audio class="perception-audio" controls preload="metadata" src="./static/suppl/assets/audio/X9VYuAtz4rk_023.wav"></audio>
+            <div class="slot-group">
+              <div class="slot-group-title">Audio slots</div>
+              <div class="slot-row">
+                <strong>A0</strong>
+                <span class="slot-label">person playing saxophone <span class="slot-conf">conf 0.986</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-left</em><em class="slot-pred">level</em><em class="slot-pred">1.5-5 m</em></div>
+              </div>
+              <div class="slot-row">
+                <strong>A1</strong>
+                <span class="slot-label">person playing electric guitar <span class="slot-conf">conf 0.937</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-right</em><em class="slot-pred">level</em><em class="slot-pred">1.5-5 m</em></div>
+              </div>
+            </div>
+            <div class="slot-group">
+              <div class="slot-group-title">Visual slots</div>
+              <div class="slot-row">
+                <strong>V0</strong>
+                <span class="slot-label">person playing electric guitar <span class="slot-conf">conf 0.987</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-right</em><em class="slot-pred">level</em><em class="slot-pred">1.5-5 m</em></div>
+              </div>
+              <div class="slot-row">
+                <strong>V1</strong>
+                <span class="slot-label">person playing saxophone <span class="slot-conf">conf 0.917</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-left</em><em class="slot-pred">level</em><em class="slot-pred">1.5-5 m</em></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="perception-card">
+          <div class="grounding-visual">
+            <img src="./static/suppl/assets/images/U31UWv9Cvk0_001.jpg" alt="River beside sidewalk grounding example">
+            <span class="pin" style="--x: 79%; --y: 59%;">1</span>
+            <span class="pin pin-alt" style="--x: 20%; --y: 57%;">2</span>
+          </div>
+          <div class="perception-body">
+            <audio class="perception-audio" controls preload="metadata" src="./static/suppl/assets/audio/U31UWv9Cvk0_001.wav"></audio>
+            <div class="slot-group">
+              <div class="slot-group-title">Audio slots</div>
+              <div class="slot-row">
+                <strong>A0</strong>
+                <span class="slot-label">river <span class="slot-conf">conf 0.776</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-right</em><em class="slot-pred">level</em><em class="slot-pred">&gt;10 m</em></div>
+              </div>
+            </div>
+            <div class="slot-group">
+              <div class="slot-group-title">Visual slots</div>
+              <div class="slot-row">
+                <strong>V0</strong>
+                <span class="slot-label">river <span class="slot-conf">conf 0.956</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-right</em><em class="slot-pred">low</em><em class="slot-pred">5-10 m</em></div>
+              </div>
+              <div class="slot-row">
+                <strong>V1</strong>
+                <span class="slot-label">parked cars <span class="slot-conf">conf 0.863</span></span>
+                <div class="slot-tag-row"><em class="slot-pred">front-right</em><em class="slot-pred">level</em><em class="slot-pred">&gt;10 m</em></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="story-grid">
+        <figure class="media-frame">
+          <img src="./static/figures/small_avloc_vis.png" alt="Audio-visual localization qualitative result">
+          <figcaption class="figure-caption">
+            <strong>AV localization visualization.</strong> Global semantic attention proposes sounding regions, refined by spatial consistency of SceneBind slots.
+          </figcaption>
+        </figure>
+        <div>
+          <div class="section-kicker">Transfer</div>
+          <h2 class="title is-3 section-title">Zero-shot transfer to audio-visual localization.</h2>
+          <p class="section-copy">
+            SceneBind transfers to egocentric audio-visual localization without finetuning. It first proposes candidate sounding regions with global semantic attention, then refines the prediction using slot-level spatial consistency.
+          </p>
+          <div class="pill-row">
+            <span class="pill"><i class="fas fa-volume-high"></i> Stereo audio</span>
+            <span class="pill"><i class="fas fa-cube"></i> 3D spatial slots</span>
+            <span class="pill"><i class="fas fa-location-dot"></i> Audio-visual object selection</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-soft" id="samples-viewer">
+    <div class="container is-fluid wide-container">
+      <div class="columns is-vcentered mb-4">
+        <div class="column">
+          <div class="section-kicker">Sample Viewer</div>
+          <h2 class="title is-3 section-title">Explore selected queries interactively.</h2>
+          <p class="section-copy">
+            The sample viewer contains the full selected qualitative set, including query modality, retrieved top results, ranks, object slots, and audio playback.
+          </p>
+        </div>
+        <div class="column is-narrow">
+          <a href="./static/suppl/index.html" class="button is-dark is-rounded">
+            <span class="icon"><i class="fas fa-up-right-from-square"></i></span>
+            <span>Open Sample Viewer</span>
+          </a>
+        </div>
+      </div>
+      <div class="samples-frame">
+        <iframe src="./static/suppl/index.html" loading="lazy" title="SceneBind sample viewer"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="citation">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered mb-5">
+        <div class="section-kicker">Citation</div>
+        <h2 class="title is-3 section-title">BibTeX</h2>
+      </div>
+      <pre class="bibtex"><code></code></pre>
+    </div>
+  </section>
+</body>
+
+</html>
