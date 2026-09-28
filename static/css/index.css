@@ -66,12 +66,21 @@ figure {
 
 .publication-title {
   max-width: 1080px;
-  margin: 0 auto 1.35rem;
+  margin: 0 auto 1rem;
   color: #111a20;
   font-size: clamp(2.4rem, 7vw, 4.9rem);
   line-height: 1.02;
   letter-spacing: 0;
   overflow-wrap: normal;
+}
+
+.publication-spotlight {
+  margin: 0 auto 1.35rem;
+  color: #b7472a;
+  font-family: "Google Sans", "Noto Sans", Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .hero-teaser {
